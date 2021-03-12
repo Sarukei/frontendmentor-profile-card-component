@@ -1,13 +1,145 @@
+/**
+// Variables
+**/
+:root {
+  --card-border-radius: 1rem;
+  --dark-cyan: hsl(185, 75%, 39%);
+  --dark-desaturated-blue: hsl(229, 23%, 23%);
+  --dark-grey-blue: hsl(227, 10%, 46%);
+  --dark-grey: hsl(0, 0%, 59%);
+}
+
+/**
+// Base Styling
+**/
 html {
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: font-size 1.5s;
+  text-rendering: optimizeLegibility;
+
+  @media screen and (max-width: 337px) {
+    font-size: 12px;
+  }
 }
 
 *,
 *:before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  background: url("../images/bg-pattern-top.svg") no-repeat top -50% left -50%/60%,
+    url("../images/bg-pattern-bottom.svg") no-repeat bottom -50% left 150%/60%,
+    var(--dark-cyan);
+}
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/**
+// Profile Card
+**/
 .profile-card {
-  background: #ccc;
+  background: url("../images/bg-pattern-card.svg"), rgb(31, 216, 223);
+  color: var(--dark-desaturated-blue);
+  padding-top: 8.75em;
+  //   flex: 0 1 23.4375rem;
+  width: 100%;
+  max-width: 20.625rem;
+  border-radius: var(--card-border-radius);
+  overflow: auto;
+  box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.24);
+
+  &__content {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__user-info {
+      //   outline: 1px solid red;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding-bottom: 1.5em;
+
+      &__avatar {
+        border: 0.3125em solid white;
+        border-radius: 100%;
+        // align-self: center;
+        position: relative;
+        transform: translateY(-50%);
+        margin-bottom: -1.75em;
+      }
+
+      &__user-title {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1em;
+
+        &__name {
+          margin-right: 0.666666em;
+          font-size: 1.125rem;
+        }
+        &__age {
+          color: var(--dark-grey);
+          font-size: 1.125rem;
+        }
+
+        &__location {
+          color: var(--dark-grey);
+        }
+      }
+    }
+
+    &__user-stats {
+      padding: 1.875em 2.625em;
+      border-top: 1px solid var(--dark-grey);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      & > * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.5;
+
+        span {
+          font-weight: 700;
+          font-size: 1.125rem;
+        }
+
+        h4 {
+          font-weight: 400;
+          font-size: 0.75rem;
+          letter-spacing: 0.125em;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
 }
